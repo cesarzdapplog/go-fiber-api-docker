@@ -21,7 +21,7 @@ After making changes in the code run:
 ```
 docker run build
 ```
-run docker  [click on this link](#run-docker)
+[run docker](#run-docker)
 
 # Route
 /products
