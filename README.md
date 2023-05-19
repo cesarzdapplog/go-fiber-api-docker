@@ -3,18 +3,27 @@
 This repository is part of my article on Medium:  
 [Build a Simple API in Go with Fiber and Docker](https://levelup.gitconnected.com/api-in-go-with-fiber-and-docker-5de04651463a)
 
-## Env file
+# Env file
 Create .env file using the .env.example file
  
-## Docker
-Clone this repository and run:
+# Docker
+## Run Docker
+Clone this repository and up project run:
 ```
 docker-compose up
 ```
+or
+```
+docker compose up
+```
+## Edit code
+After making changes in the code run:
+```
+docker run build
+```
+run docker  [click on this link](#run-docker)
 
-You can then hit the following endpoints:
-
-## Route
+# Route
 /products
 /suppliers
 
