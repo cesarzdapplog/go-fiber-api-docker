@@ -4,6 +4,7 @@ services:
   postgres:
     container_name: postgres
     image: postgres:14.2
+    restart: always
     environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
@@ -17,6 +18,19 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+    depends_on:
+      postgres:
+        condition: service_healthy # waiting until heathcheck of postgres is good
 
   go:
     container_name: go

@@ -20,6 +20,7 @@ func Init(c *config.Config) *gorm.DB {
 	}
 
 	db.AutoMigrate(&models.Product{})
+	db.AutoMigrate(&models.Supplier{})
 
 	return db
 }
