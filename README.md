@@ -19,7 +19,7 @@ After making changes in the code run:
 ```
 docker run build
 ```
-[run docker](#run-docker)
+and [run docker](#run-docker)
 
 ## Route
 /products
