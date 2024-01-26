@@ -7,7 +7,7 @@ import (
 
 type UpdateUserRequestBody struct {
 	Email  string `json:"email"`
-	Password string `json:"password`
+	Password string `json:"-"`
 }
 
 func (h handler) UpdateUser(c *fiber.Ctx) error {

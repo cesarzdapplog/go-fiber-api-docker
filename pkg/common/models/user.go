@@ -2,8 +2,8 @@ package models
 import "golang.org/x/crypto/bcrypt"
 type User struct {
 	Id       int    `json:"id" gorm:"primaryKey"`
-    Email    string `json:"email" gorm:"unique;not null" validate:"required,email"`
-    Password string `json:"-" gorm:"not null" validate:"required"`
+    Email    string `json:"email" gorm:"unique;not null"`
+    Password string `json:"-" gorm:"not null"`
 }
 
 func (u *User) SetPassword(password string) error {
