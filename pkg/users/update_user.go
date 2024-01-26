@@ -24,12 +24,14 @@ func (h handler) UpdateUser(c *fiber.Ctx) error {
 	if result := h.DB.First(&user, id); result.Error != nil {
 		return fiber.NewError(fiber.StatusNotFound, result.Error.Error())
 	}
-
 	if err := user.SetPassword(body.Password); err != nil {
 		return fiber.NewError(fiber.StatusBadRequest, err.Error())
 	}
 	user.Email = body.Email
-
+	
+	if err := user.Validate(); err != nil {
+		return fiber.NewError(fiber.StatusBadRequest, err.Error())
+	}
 	// save user
 	h.DB.Save(&user)
 

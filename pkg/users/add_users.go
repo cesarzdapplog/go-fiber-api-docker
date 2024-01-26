@@ -19,13 +19,16 @@ func (h handler) AddUser(c *fiber.Ctx) error {
     }
 
     var user models.User
-
+	// Validate user structure
     if err := user.SetPassword(body.Password); err != nil {
         return fiber.NewError(fiber.StatusBadRequest, "Error setting password: "+err.Error())
     }
-
+	
     user.Email = body.Email
-
+	
+	if err := user.Validate(); err != nil {
+		return fiber.NewError(fiber.StatusBadRequest, err.Error())
+	}
     if result := h.DB.Create(&user); result.Error != nil {
         // Puedes cambiar el código de estado según el tipo de error de la base de datos
         return fiber.NewError(fiber.StatusUnprocessableEntity, "Error creating user: "+result.Error.Error())
