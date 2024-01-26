@@ -6,14 +6,14 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-type UpdateSuppliertRequestBody struct {
+type UpdateSupplierRequestBody struct {
 	Name  string `json:"name"`
 	Address string `json:"address`
 }
 
 func (h handler) UpdateSupplier(c *fiber.Ctx) error {
 	id := c.Params("id")
-	body := UpdateSuppliertRequestBody{}
+	body := UpdateSupplierRequestBody{}
 
 	// getting request's body
 	if err := c.BodyParser(&body); err != nil {
