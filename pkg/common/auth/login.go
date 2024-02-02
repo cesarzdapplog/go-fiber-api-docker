@@ -23,6 +23,8 @@ func (h handler) LoginUser(c *fiber.Ctx) error {
     if result := h.DB.Where("email = ?", reqBody.Email).First(&user); result.Error != nil {
         return fiber.NewError(fiber.StatusUnauthorized, "Usuario no encontrado")
     }
+    fmt.Println("reqBody.Password", reqBody.Password)
+    fmt.Println("user.Password", user.Password)
 
     if err := user.CheckPassword(string(reqBody.Password)); err != nil {
         fmt.Println(err)
