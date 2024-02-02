@@ -8,6 +8,7 @@ import (
 	"go-fiber-api-docker/pkg/products"
 	"go-fiber-api-docker/pkg/suppliers"
 	"go-fiber-api-docker/pkg/users"
+	"go-fiber-api-docker/pkg/common/auth"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -24,7 +25,7 @@ func main() {
 	products.RegisterRoutes(app, h)
 	suppliers.RegisterRoutes(app, h)
 	users.RegisterRoutes(app, h)
-
+	auth.RegisterRoutes(app, h)
 
 	app.Listen(c.Port)
 }
